@@ -1,9 +1,11 @@
 import express, { Application } from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
+import swaggerUi from "swagger-ui-express";
 import userRoutes from "./presentation/routes/user.routes";
 import taskRoutes from "./presentation/routes/task.routes";
 import { errorHandler } from "./infrastructure/middleware/error.middleware";
+import { swaggerSpec } from "./config/swagger.config";
 
 // Load .env for local development
 dotenv.config();
@@ -34,7 +36,13 @@ export const createApp = (): Application => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
-    // Routes
+    // Swagger Documentation
+    app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+        customSiteTitle: "Task Manager API Docs",
+        customCss: ".swagger-ui .topbar { display: none }",
+    }));
+
+    // API Routes
     app.use("/api/users", userRoutes);
     app.use("/api/tasks", taskRoutes);
 

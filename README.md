@@ -52,6 +52,8 @@ src/
 - **Firebase Functions** - Serverless hosting
 - **CORS** - Cross-Origin Resource Sharing
 - **dotenv** - Variables de entorno
+- **Swagger/OpenAPI** - Documentación interactiva de la API
+- **Jest** - Framework de testing
 
 ## Principios Aplicados
 
@@ -63,6 +65,29 @@ src/
 - ✅ **Input Validation**
 - ✅ **TypeScript Strict Mode**
 - ✅ **Unit Testing** (Jest + ts-jest)
+- ✅ **API Documentation** (Swagger/OpenAPI)
+
+## Documentación de la API
+
+La API está completamente documentada usando Swagger/OpenAPI 3.0.
+
+### Acceder a la documentación interactiva:
+
+**Local:**
+```
+http://localhost:3000/api-docs
+```
+
+**Producción:**
+```
+https://api-cuhnzjomva-uc.a.run.app/api-docs
+```
+
+La documentación incluye:
+- ✅ Descripción detallada de todos los endpoints
+- ✅ Esquemas de request/response con ejemplos
+- ✅ Posibilidad de probar los endpoints directamente desde el navegador
+- ✅ Validaciones y restricciones de cada campo
 
 ## API Endpoints
 
@@ -419,18 +444,3 @@ Los tests se ejecutan automáticamente en el pipeline de CI/CD antes del desplie
 - ✅ Manejo de errores
 - ✅ Tests unitarios
 - ✅ CI/CD con tests automáticos
-- ⚠️ **No implementado en este challenge**: Autenticación JWT, rate limiting
-
-## Próximos Pasos
-
-- [ ] Implementar JWT authentication
-- [ ] Rate limiting
-- [ ] Logging con Winston
-- [ ] Documentación con Swagger/OpenAPI
-- [ ] Tests de integración y E2E
-- [ ] Tests para controllers
-
-## Autor
-
-Implementado para el Challenge Técnico Fullstack Developer.
-# todo-app-node
