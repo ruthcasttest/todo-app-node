@@ -62,6 +62,7 @@ src/
 - ✅ **Error Handling**
 - ✅ **Input Validation**
 - ✅ **TypeScript Strict Mode**
+- ✅ **Unit Testing** (Jest + ts-jest)
 
 ## API Endpoints
 
@@ -226,6 +227,9 @@ El servidor estará disponible en `http://localhost:3000`
 npm run dev          # Desarrollo con hot-reload
 npm run build        # Compilar TypeScript
 npm start            # Ejecutar versión compilada
+npm test             # Ejecutar tests
+npm run test:watch   # Ejecutar tests en modo watch
+npm run test:coverage # Ejecutar tests con reporte de cobertura
 npm run lint         # Verificar código
 npm run lint:fix     # Corregir errores de linting
 npm run deploy       # Desplegar a Firebase Functions
@@ -383,21 +387,48 @@ Cambia el `PORT` en `.env` o mata el proceso:
 lsof -ti:3000 | xargs kill
 ```
 
+## Testing
+
+El proyecto incluye tests unitarios para los servicios usando Jest y ts-jest.
+
+### Ejecutar Tests
+
+```bash
+# Ejecutar todos los tests
+npm test
+
+# Ejecutar tests en modo watch (útil durante desarrollo)
+npm run test:watch
+
+# Generar reporte de cobertura
+npm run test:coverage
+```
+
+### Cobertura de Tests
+
+Los tests cubren:
+- ✅ **UserService**: Validación de email, creación de usuarios, verificación de existencia
+- ✅ **TaskService**: CRUD completo, validaciones de longitud, manejo de errores
+
+Los tests se ejecutan automáticamente en el pipeline de CI/CD antes del despliegue.
+
 ## Seguridad
 
 - ✅ CORS configurado
 - ✅ Validación de entrada
 - ✅ Manejo de errores
+- ✅ Tests unitarios
+- ✅ CI/CD con tests automáticos
 - ⚠️ **No implementado en este challenge**: Autenticación JWT, rate limiting
 
 ## Próximos Pasos
 
-- [ ] Agregar tests unitarios
 - [ ] Implementar JWT authentication
 - [ ] Rate limiting
 - [ ] Logging con Winston
 - [ ] Documentación con Swagger/OpenAPI
-- [ ] CI/CD pipeline
+- [ ] Tests de integración y E2E
+- [ ] Tests para controllers
 
 ## Autor
 
