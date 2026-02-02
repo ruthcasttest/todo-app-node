@@ -12,8 +12,23 @@ export const createApp = (): Application => {
     const app = express();
 
     // Middlewares
+    const allowedOrigins = [
+        "http://localhost:4200",
+        "https://todo-tasks-4f8c7.web.app",
+        "https://todo-tasks-4f8c7.firebaseapp.com"
+    ];
+
     app.use(cors({
-        origin: process.env.CORS_ORIGIN || "http://localhost:4200",
+        origin: (origin, callback) => {
+            // Allow requests with no origin (like mobile apps or curl requests)
+            if (!origin) return callback(null, true);
+
+            if (allowedOrigins.includes(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
         credentials: true
     }));
     app.use(express.json());
